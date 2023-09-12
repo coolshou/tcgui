@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 """TC web GUI."""
 
 import argparse
@@ -6,7 +9,10 @@ import re
 import subprocess
 import sys
 
-from flask import Flask, redirect, render_template, request, url_for
+try:
+    from flask import Flask, redirect, render_template, request, url_for
+except ImportError as err:
+    SystemExit("%s\n sudo apt install python3-flask" % err)
 
 BANDWIDTH_UNITS = [
     "bit",  # Bits per second
@@ -15,10 +21,10 @@ BANDWIDTH_UNITS = [
     "gbit",  # Gigabits per second
     "tbit",  # Terabits per second
     "bps",  # Bytes per second
-    "kbps",  # Kilobytes per second
-    "mbps",  # Megabytes per second
-    "gbps",  # Gigabytes per second
-    "tbps",  # Terabytes per second
+    "Kbps",  # Kilobytes per second
+    "Mbps",  # Megabytes per second
+    "Gbps",  # Gigabytes per second
+    "Tbps",  # Terabytes per second
 ]
 
 STANDARD_UNIT = "mbit"
